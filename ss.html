@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang=en xmlns=http://www.w3.org/1999/xhtml>
+<head>
+<style>
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  background: #333;
+  color: #FFF;
+  border-top: 5px solid #69c773;
+  padding: 0 1em;
+  margin: 0;
+}
+
+iframe {
+  background: #FFF;
+  border: 3px solid #000;
+}</style>
+</head>
+<body>
+<h1>Controller Window</h1>
+<p>
+  This document is on the domain: http://codepen.io
+</p>
+<p>
+  <button id="send">Send Message</button>
+</p>
+
+<iframe id="receiver" src="C:/Users/rajgau/Desktop/check.html" width="500" height="200">
+  <p>Your browser does not support iframes.</p>
+</iframe>
+<script>
+window.onload = function() {
+	// Get the window displayed in the iframe.
+	var receiver = document.getElementById('receiver').contentWindow;
+  
+	// Get a reference to the 'Send Message' button.
+	var btn = document.getElementById('send');
+
+	// A function to handle sending messages.
+	function sendMessage(e) {
+		// Prevent any default browser behaviour.
+		e.preventDefault();
+
+		// Send a message with the text 'Hello Treehouse!' to the new window.
+		receiver.postMessage('Hello Treehouse!', *);
+	}
+
+	// Add an event listener that will execute the sendMessage() function
+	// when the send button is clicked.
+	btn.addEventListener('click', sendMessage);
+}
+
+</script>
+</body>
+</html>
+
