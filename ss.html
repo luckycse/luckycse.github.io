@@ -28,6 +28,7 @@ iframe {
 <iframe id="receiver" src="check.html" width="500" height="200">
   <p>Your browser does not support iframes.</p>
 </iframe>
+	<div id="messagefromI">  </div>
 <script>
 window.onload = function() {
 	// Get the window displayed in the iframe.
@@ -48,7 +49,11 @@ window.onload = function() {
 	// Add an event listener that will execute the sendMessage() function
 	// when the send button is clicked.
 	btn.addEventListener('click', sendMessage);
-}
+
+var messageEle=document.getElementById('messagefromI');
+function receiveMessage(e){
+messageEle.innerHTML="Message Received: "+e.data;}
+window.addEventListener('message',receiveMessage);}
 
 </script>
 </body>
