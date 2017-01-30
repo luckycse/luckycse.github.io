@@ -18,9 +18,7 @@ function receiveMessage(e){
 messageEle.innerHTML="Message Received: "+e.data;}
 window.addEventListener('message',receiveMessage);
 
-	// Get the window displayed in the iframe.
-	var receiver = document.getElementById('receiver').contentWindow;
-  
+ 
 	// Get a reference to the 'Send Message' button.
 	var btn = document.getElementById('sendI');
 
@@ -30,7 +28,7 @@ window.addEventListener('message',receiveMessage);
 		e.preventDefault();
 
 		// Send a message with the text 'Hello Treehouse!' to the new window.
-		receiver.postMessage('Hello Treehouse!','https://luckycse.github.io/ss.html');
+		parent.postMessage('Hello Form Iframe!','*');
 	}
 
 	// Add an event listener that will execute the sendMessage() function
