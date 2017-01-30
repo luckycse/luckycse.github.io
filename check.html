@@ -6,9 +6,9 @@
 </head>
 <body>
 	<h1>Receiver Window</h1>
-	<p>
-		This document is on the domain: http://demos.matt-west.com
-	</p>
+<p>
+  <button id="sendI">Send Message</button>
+</p>
 	<div id="message"></div>
 
 	<script>//<![CDATA[
@@ -16,7 +16,28 @@ window.onload=function(){
 var messageEle=document.getElementById('message');
 function receiveMessage(e){
 messageEle.innerHTML="Message Received: "+e.data;}
-window.addEventListener('message',receiveMessage);}
+window.addEventListener('message',receiveMessage);
+
+	// Get the window displayed in the iframe.
+	var receiver = document.getElementById('receiver').contentWindow;
+  
+	// Get a reference to the 'Send Message' button.
+	var btn = document.getElementById('sendI');
+
+	// A function to handle sending messages.
+	function sendMessage(e) {
+		// Prevent any default browser behaviour.
+		e.preventDefault();
+
+		// Send a message with the text 'Hello Treehouse!' to the new window.
+		receiver.postMessage('Hello Treehouse!','https://luckycse.github.io/ss.html');
+	}
+
+	// Add an event listener that will execute the sendMessage() function
+	// when the send button is clicked.
+	btn.addEventListener('click', sendMessage);
+}
+
 //]]></script>
 </body>
 </html>
